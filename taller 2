@@ -1,0 +1,47 @@
+def esprimo(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+def CA():
+    return set({x for x in range(6, 21)})
+A = CA()
+
+def CB():
+    return set({x for x in range(2, 25, 2)})
+B= CB()
+
+def CC():
+    return set({1, 4, 8, 10, 12, 15, 18, 20})
+C= CC()
+
+def CD():
+    return set({x for x in range(2, 46) if esprimo(x)})
+D = CD()
+
+def interseccion(a, b):
+    return a & b
+
+def union(a, b):
+    return a | b
+
+def diferencia(a, b):
+    return a - b
+
+def diferencia_simetrica(a, b):
+    c= a^b
+    return c    
+
+
+a= interseccion(B, diferencia_simetrica(C,D))
+b= union(interseccion(A,C), B)
+c= diferencia(union(B,D), C)
+d= diferencia_simetrica(diferencia(A,B), interseccion(A,D))
+
+print (a)
+print (b)
+print (c)
+print (d)
